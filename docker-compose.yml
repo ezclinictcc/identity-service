@@ -1,0 +1,59 @@
+version: "3.7"
+
+services:
+  database:
+    image: postgres
+    container_name: IDS_DB
+    restart: always
+    ports:
+      - 5432:5432
+    mem_limit: 300m
+    environment:
+      - POSTGRES_USER=ids_user
+      - POSTGRES_PASSWORD=pwdids
+      - POSTGRES_DB=IDS_DB
+    volumes:
+      - pgdata:/data/postgres
+    hostname: ids_db_hostname
+    networks:
+      ids_ntw:
+        ipv4_address: 172.21.0.3
+  #  network_mode: host
+  #    networks:
+  #      - networkName: "IDS_NTW"
+
+  app:
+    build: .
+    container_name: IDS
+    ports:
+      - 8080:8080
+    mem_limit: 300m
+    volumes:
+      - .:/usr/app
+    hostname: ids_app_hostname
+    networks:
+      ids_ntw:
+        ipv4_address: 172.21.0.2
+##    networks:
+#      - networkName: "IDS_NTW"
+
+volumes:
+  pgdata:
+    driver: local
+networks:
+  ids_ntw:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/24
+#
+#Subir o serviço
+#
+#docker-compose up
+#
+#Subir o serviço em backgroud
+#docker-compose up -d
+#
+#Visualizar logs
+#
+#docker logs IDS -f

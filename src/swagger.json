@@ -1,0 +1,571 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "IdentityService api documentation.",
+    "description": "IdentityService api documentation.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "teste@teste.com.br"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/identity-service",
+      "description": "Url to access service"
+    }
+  ],
+  "paths": {
+    "/user": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Find",
+        "description": "Create a new user",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "example": "a86ec34e-b741-41c5-8b5f-048bd7349848",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UUID user identification"
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "User name"
+          },
+          {
+            "in": "query",
+            "name": "idUserType",
+            "example": "a86ec34e-b741-41c5-8b5f-048bd7349848",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UUID user type identification"
+          },
+          {
+            "in": "query",
+            "name": "idProfile",
+            "example": "a86ec34e-b741-41c5-8b5f-048bd7349848",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UUID profile identification"
+          },
+          {
+            "in": "query",
+            "name": "password",
+            "schema": {
+              "type": "string"
+            },
+            "description": "User name"
+          },
+          {
+            "in": "query",
+            "name": "email",
+            "example": "teste@teste.com.br",
+            "schema": {
+              "type": "string"
+            },
+            "description": "User e-mail"
+          },
+          {
+            "in": "query",
+            "name": "country",
+            "example": "Brasil",
+            "schema": {
+              "type": "string"
+            },
+            "description": "User contry"
+          },
+          {
+            "in": "query",
+            "name": "state",
+            "example": "São Paulo",
+            "schema": {
+              "type": "string"
+            },
+            "description": "User state"
+          },
+          {
+            "in": "query",
+            "name": "city",
+            "example": "Campinas",
+            "schema": {
+              "type": "string"
+            },
+            "description": "User city"
+          },
+          {
+            "in": "query",
+            "name": "district",
+            "example": "Bairro X, Rua Y",
+            "schema": {
+              "type": "string"
+            },
+            "description": "User district"
+          },
+          {
+            "in": "query",
+            "name": "number",
+            "example": "12345",
+            "schema": {
+              "type": "number"
+            },
+            "description": "User street number"
+          },
+          {
+            "in": "query",
+            "name": "cep",
+            "example": "13040-700",
+            "schema": {
+              "type": "string"
+            },
+            "description": "User cep"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User searching success"
+          },
+          "500": {
+            "description": "Unexpected errors"
+          }
+        }
+      },
+      "post": {
+        "tags": ["User"],
+        "summary": "Create",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User Created"
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["User"],
+        "summary": "Update",
+        "description": "Update  an existing user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User Updated"
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["User"],
+        "summary": "Delete",
+        "description": "Delete  an existing user",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UUID identification"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User Deleted"
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/clinic": {
+      "get": {
+        "tags": ["Clinic"],
+        "summary": "Find",
+        "description": "Create a new clinic",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "example": "a86ec34e-b741-41c5-8b5f-048bd7349848",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UUID clinic identification"
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Clinic name"
+          },
+          {
+            "in": "query",
+            "name": "clinicSpecialty",
+            "example": "CARDIOLOGIST;SURGEON;GENERAL_PRACTIONER;DERMATOLOGIST",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Clinic specialties"
+          },
+          {
+            "in": "query",
+            "name": "country",
+            "example": "Brasil",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Clinic contry"
+          },
+          {
+            "in": "query",
+            "name": "state",
+            "example": "São Paulo",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Clinic state"
+          },
+          {
+            "in": "query",
+            "name": "city",
+            "example": "Campinas",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Clinic city"
+          },
+          {
+            "in": "query",
+            "name": "district",
+            "example": "Bairro X, Rua Y",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Clinic district"
+          },
+          {
+            "in": "query",
+            "name": "number",
+            "example": "12345",
+            "schema": {
+              "type": "number"
+            },
+            "description": "Clinic street number"
+          },
+          {
+            "in": "query",
+            "name": "cep",
+            "example": "13040-700",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Clinic cep"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Clinic searching success"
+          },
+          "500": {
+            "description": "Unexpected errors"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Clinic"],
+        "summary": "Create",
+        "description": "Create a new clinic",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClinicEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Clinic Created"
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Clinic"],
+        "summary": "Update",
+        "description": "Update  an existing clinic",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClinicEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Clinic Updated"
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Clinic"],
+        "summary": "Delete",
+        "description": "Delete  an existing clinic",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UUID identification"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Clinic Deleted"
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "tags": ["Profile"],
+        "summary": "Find",
+        "description": "Create a new profile",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "example": "a86ec34e-b741-41c5-8b5f-048bd7349848",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UUID profile identification"
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Profile name"
+          },
+          {
+            "in": "query",
+            "name": "actions",
+            "example": "a86ec34e-b741-41c5-8b5f-048bd7349848",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UUID clinic type identification"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Profile searching success"
+          },
+          "500": {
+            "description": "Unexpected errors"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Profile"],
+        "summary": "Create",
+        "description": "Create a new profile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Profile Created"
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Profile"],
+        "summary": "Update",
+        "description": "Update  an existing profile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Profile Updated"
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Profile"],
+        "summary": "Delete",
+        "description": "Delete  an existing profile",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UUID identification"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Profile Deleted"
+          },
+          "500": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserEntity": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "idUserType": {
+            "type": "string"
+          },
+          "idProfile": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "district": {
+            "type": "string"
+          },
+          "number": {
+            "type": "number"
+          },
+          "cep": {
+            "type": "string"
+          }
+        }
+      },
+      "ClinicEntity": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "clinicSpecialty": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "district": {
+            "type": "string"
+          },
+          "number": {
+            "type": "number"
+          },
+          "cep": {
+            "type": "string"
+          }
+        }
+      },
+      "ProfileEntity": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "actions": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
