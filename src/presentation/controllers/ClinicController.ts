@@ -7,7 +7,7 @@ import { IBaseConnection } from "../../usecases/repository/interfaces/IBaseConne
 import CommonService from "../../usecases/service/common/CommonService";
 import { IAppLogger } from "../../usecases/service/interfaces/IAppLogger";
 import { IHttpRequest } from "../interfaces/http-request";
-import { LogCriticality } from "../interfaces/logs";
+import { LogCriticality } from "../interfaces/log-criticality";
 import { BaseController } from "./BaseController";
 
 class ClinicController extends BaseController<UserEntity, IBaseConnection> {
