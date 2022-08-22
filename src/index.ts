@@ -17,7 +17,7 @@ orm.createConnection();
 const app: IAppConfig = ExpressAppConfig.getInstance();
 app.setMidleware(cors());
 app.setMidleware("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
-app.setPort(process.env.APP_PORT || 8080);
+app.setPort(process.env.PORT || 8080);
 app.setRoute(routes.getRouter());
 app.startServer();
 
