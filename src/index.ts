@@ -12,6 +12,7 @@ dotenv.config({
 });
 
 const port = process.env.PORT || 8080;
+const url = "https://identityservice1.herokuapp.com";
 const orm = getRepositoryAdapter();
 const corsOptions = {
   origin: ["*"],
@@ -21,7 +22,7 @@ const corsOptions = {
 
 orm.createConnection();
 
-swaggerFile.servers[0].url = `http://localhost:${port}/identity-service`;
+swaggerFile.servers[0].url = `http://${url}:${port}/identity-service`;
 
 const app: IAppConfig = ExpressAppConfig.getInstance();
 
