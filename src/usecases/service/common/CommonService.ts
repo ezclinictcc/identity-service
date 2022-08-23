@@ -22,8 +22,14 @@ class CommonService<
   }
 
   async find(entity: T, logger: L, repositoryManager: R): Promise<T[]> {
-    logger.showLog(LogCriticality.INFO, "Searching user on database...");
-    return this.repository.find(entity, repositoryManager);
+    try {
+      logger.showLog(LogCriticality.INFO, "Searching user on database...");
+      const response = this.repository.find(entity, repositoryManager);
+      return response;
+    } catch (error) {
+      logger.showLog(LogCriticality.ERROR, error);
+    }
+    return null;
   }
 
   async delete(entity: T, logger: L, repositoryManager: R): Promise<T> {
