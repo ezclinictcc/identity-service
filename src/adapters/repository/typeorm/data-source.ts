@@ -27,6 +27,11 @@ const AppDataSource = new DataSource({
     V2Release1660256966235,
   ],
   ssl: true,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
   migrationsTransactionMode: "all",
 });
 
