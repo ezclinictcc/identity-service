@@ -13,12 +13,19 @@ dotenv.config({
 
 const port = process.env.PORT || 8080;
 const orm = getRepositoryAdapter();
+const corsOptions = {
+  origin: ["*"],
+  preflightContinue: false,
+  credentials: true,
+};
+
 orm.createConnection();
 
 swaggerFile.servers[0].url = `http://localhost:${port}/identity-service`;
 
 const app: IAppConfig = ExpressAppConfig.getInstance();
-app.setMidleware(cors());
+
+app.setMidleware(cors(corsOptions));
 app.setMidleware("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.setPort(port);
 app.setRoute(routes.getRouter());
