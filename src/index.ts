@@ -22,7 +22,7 @@ const corsOptions = {
 
 orm.createConnection();
 
-swaggerFile.servers[0].url = `${url}:${port}/identity-service`;
+swaggerFile.servers[0].url = `${url}/identity-service`;
 
 const app: IAppConfig = ExpressAppConfig.getInstance();
 
