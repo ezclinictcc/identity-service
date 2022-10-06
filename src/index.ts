@@ -28,7 +28,7 @@ swaggerFile.servers[0].url = `${url}/identity-service`;
 
 const app: IAppConfig = ExpressAppConfig.getInstance();
 
-app.setMidleware(corsAdapter());
+app.setMidleware(corsAdapter);
 app.setMidleware("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.setPort(port);
 app.setRoute(routes.getRouter());
