@@ -6,6 +6,7 @@ import ExpressAppConfig from "./adapters/external/express/ExpressAppAdapter";
 import { IAppConfig } from "./external/interfaces/IAppConfig";
 import routes from "./external/routes";
 import swaggerFile from "./swagger.json";
+import corsAdapter from "./adapters/external/cors";
 
 dotenv.config({
   path: process.env.NODE_ENV === "dev" ? ".env.dev" : ".env",
@@ -17,6 +18,7 @@ const orm = getRepositoryAdapter();
 const corsOptions = {
   origin: ["*"],
   preflightContinue: false,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
 };
 
@@ -26,7 +28,7 @@ swaggerFile.servers[0].url = `${url}/identity-service`;
 
 const app: IAppConfig = ExpressAppConfig.getInstance();
 
-app.setMidleware(cors(corsOptions));
+app.setMidleware(corsAdapter());
 app.setMidleware("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.setPort(port);
 app.setRoute(routes.getRouter());
