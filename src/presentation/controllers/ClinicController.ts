@@ -33,6 +33,7 @@ class ClinicController extends BaseController<UserEntity, IBaseConnection> {
 
     const clinic: ClinicEntity = new ClinicEntity(
       uuid.createId(),
+      body.idUser,
       body.name,
       body.clinicSpecialty,
       body.country,
@@ -63,6 +64,7 @@ class ClinicController extends BaseController<UserEntity, IBaseConnection> {
 
     const clinic: ClinicEntity = new ClinicEntity(
       body.id,
+      null,
       body.name,
       body.clinicSpecialty,
       body.country,
@@ -92,6 +94,7 @@ class ClinicController extends BaseController<UserEntity, IBaseConnection> {
 
     const clinic: ClinicEntity = new ClinicEntity(
       param.id,
+      param.idUser,
       param.name,
       param.clinicSpecialty,
       param.country,
@@ -122,6 +125,7 @@ class ClinicController extends BaseController<UserEntity, IBaseConnection> {
 
     const clinic: ClinicEntity = new ClinicEntity(
       param.id,
+      null,
       null,
       null,
       null,

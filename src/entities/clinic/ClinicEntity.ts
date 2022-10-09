@@ -11,9 +11,15 @@ export const ClinicSchema: IDBSchema = {
       isNullable: false,
     },
     {
+      name: "idUser",
+      type: "uuid",
+      isPrimary: true,
+      isNullable: false,
+    },
+    {
       name: "name",
       type: "varchar",
-      isPrimary: true,
+      isPrimary: false,
       isNullable: false,
     },
     {
@@ -64,6 +70,8 @@ export const ClinicSchema: IDBSchema = {
 export class ClinicEntity extends CommonEntity {
   public readonly name: string;
 
+  public readonly idUser: string;
+
   public readonly clinicSpecialty: string;
 
   public readonly country: string;
@@ -82,6 +90,7 @@ export class ClinicEntity extends CommonEntity {
 
   public constructor(
     id: string,
+    idUser: string,
     name: string,
     clinicSpecialty: string,
     country: string,
@@ -93,6 +102,7 @@ export class ClinicEntity extends CommonEntity {
     createdAt: Date
   ) {
     super(id, ClinicSchema);
+    this.idUser = idUser;
     this.name = name;
     this.clinicSpecialty = clinicSpecialty;
     this.country = country;

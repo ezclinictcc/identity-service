@@ -32,6 +32,15 @@
           },
           {
             "in": "query",
+            "name": "idClinic",
+            "example": "a86ec34e-b741-41c5-8b5f-048bd7349848",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UUID user identification"
+          },
+          {
+            "in": "query",
             "name": "name",
             "schema": {
               "type": "string"
@@ -219,6 +228,15 @@
               "type": "string"
             },
             "description": "UUID clinic identification"
+          },
+          {
+            "in": "query",
+            "name": "idUser",
+            "example": "a86ec34e-b741-41c5-8b5f-048bd7349848",
+            "schema": {
+              "type": "string"
+            },
+            "description": "UUID user identification"
           },
           {
             "in": "query",

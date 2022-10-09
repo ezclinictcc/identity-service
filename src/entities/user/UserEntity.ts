@@ -11,6 +11,12 @@ export const UserSchema: IDBSchema = {
       isNullable: false,
     },
     {
+      name: "idClinic",
+      type: "uuid",
+      isPrimary: false,
+      isNullable: true,
+    },
+    {
       name: "idUserType",
       type: "uuid",
       isNullable: false,
@@ -77,6 +83,8 @@ export const UserSchema: IDBSchema = {
 export class UserEntity extends CommonEntity {
   public readonly name: string;
 
+  public readonly idClinic: string;
+
   public readonly idUserType: string;
 
   public readonly idProfile: string;
@@ -101,6 +109,7 @@ export class UserEntity extends CommonEntity {
 
   public constructor(
     id: string,
+    idClinic: string,
     name: string,
     idUserType: string,
     idProfile: string,
@@ -116,6 +125,7 @@ export class UserEntity extends CommonEntity {
   ) {
     super(id, UserSchema);
     this.name = name;
+    this.idClinic = idClinic;
     this.idUserType = idUserType;
     this.idProfile = idProfile;
     this.email = email;

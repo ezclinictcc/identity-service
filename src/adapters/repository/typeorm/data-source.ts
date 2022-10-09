@@ -7,7 +7,7 @@ import { V2Release1660256966235 } from "./migrations/releases/1660256966235-V2Re
 import { CreateUser1659896492936 } from "./migrations/users/1659896492936-CreateUser";
 import { CreateUserType1660229382984 } from "./migrations/user_type/1660229382984-CreateUserType";
 
-const AppDataSource = new DataSource({
+const AppDataSourceHeroku = new DataSource({
   type: "postgres",
   host: "ec2-44-205-63-142.compute-1.amazonaws.com",
   port: 5432,
@@ -35,7 +35,7 @@ const AppDataSource = new DataSource({
   migrationsTransactionMode: "all",
 });
 
-const AppDataSourceDocker = new DataSource({
+const AppDataSource = new DataSource({
   type: "postgres",
   host: "172.21.0.3",
   port: 5432,
