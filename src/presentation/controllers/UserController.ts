@@ -27,9 +27,9 @@ class UserController extends BaseController<UserEntity, IBaseConnection> {
     const commonRepository = new CommonRepository<UserEntity>(this.entityName);
     const service = new CommonService(commonRepository);
     const uuid = new UuidGeneratorAdapter();
-
+    const id = body.id ? body.id : uuid.createId();
     const user: UserEntity = new UserEntity(
-      uuid.createId(),
+      id,
       body.name,
       body.idUserType,
       body.idProfile,
