@@ -30,6 +30,7 @@ class UserController extends BaseController<UserEntity, IBaseConnection> {
     const id = body.id ? body.id : uuid.createId();
     const user: UserEntity = new UserEntity(
       id,
+      body.idClinic,
       body.name,
       body.idUserType,
       body.idProfile,
@@ -58,6 +59,7 @@ class UserController extends BaseController<UserEntity, IBaseConnection> {
     const service = new CommonService(commonRepository);
     const user: UserEntity = new UserEntity(
       body.id,
+      body.idClinic,
       body.name,
       body.idUserType,
       body.idProfile,
@@ -87,6 +89,7 @@ class UserController extends BaseController<UserEntity, IBaseConnection> {
     const service = new CommonService(commonRepository);
     const user = new UserEntity(
       param.id,
+      param.idClinic,
       param.name,
       param.idUserType,
       param.idProfile,
@@ -117,6 +120,7 @@ class UserController extends BaseController<UserEntity, IBaseConnection> {
     const service = new CommonService(commonRepository);
     const user = new UserEntity(
       param.id,
+      null,
       null,
       null,
       null,
